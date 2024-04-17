@@ -66,7 +66,7 @@ class HuggingFaceTokenizer(CachingTokenizer):
             # Tokenizers, which are written in Rust." So, use the "fast" version of the tokenizers if available.
             return WrappedPreTrainedTokenizer(
                 AutoTokenizer.from_pretrained(
-                    pretrained_model_name_or_path, local_files_only=True, **from_pretrained_kwargs
+                    pretrained_model_name_or_path, local_files_only=True, trust_remote_code=True, **from_pretrained_kwargs
                 )
             )
         except OSError:

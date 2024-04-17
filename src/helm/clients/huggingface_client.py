@@ -88,12 +88,10 @@ class HuggingFaceServer:
                 # TODO: Delete if-else and don't set trust_remote_code=True
                 if "trust_remote_code" in kwargs:
                     self.model = OVModelForCausalLM.from_pretrained(
-                        pretrained_model_name_or_path, export=True, **kwargs
-                    ).to(self.device)
+                        pretrained_model_name_or_path, export=True, device_map='auto', **kwargs)
                 else:
                     self.model = OVModelForCausalLM.from_pretrained(
-                        pretrained_model_name_or_path, export=True, trust_remote_code=True, **kwargs
-                    ).to(self.device)
+                        pretrained_model_name_or_path, export=True, trust_remote_code=True, device_map='auto', **kwargs)
             else:
                 if 'google/flan-t5' in pretrained_model_name_or_path.lower():
                     self.model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs)
