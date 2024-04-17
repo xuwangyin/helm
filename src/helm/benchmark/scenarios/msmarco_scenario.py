@@ -223,7 +223,7 @@ class MSMARCOScenario(Scenario):
 
     """ Information needed to retrieve MS MARCO datasets. """
     CODALAB_URI_TEMPLATE: str = "https://worksheets.codalab.org/rest/bundles/{bundle}/contents/blob/"
-    MSMARCO_URI_TEMPLATE: str = "https://msmarco.blob.core.windows.net/msmarcoranking/{file_name}"
+    MSMARCO_URI_TEMPLATE: str = "https://msmarco.z22.web.core.windows.net/msmarcoranking/{file_name}"
 
     DATA_URIS: Dict[Union[Tuple[str], Tuple[str, str]], str] = {
         ("documents",): CODALAB_URI_TEMPLATE.format(bundle="0x50d32fc56ad04dd89510bf86f9c1c9d3"),

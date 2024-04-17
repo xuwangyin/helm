@@ -87,7 +87,7 @@ class HuggingFaceServer:
                 ).to(self.device)
             else:
                 self.model = AutoModelForCausalLM.from_pretrained(
-                    pretrained_model_name_or_path, trust_remote_code=True, **kwargs
+                    pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs
                 ).to(self.device)
         with htrack_block(f"Loading Hugging Face tokenizer for model {pretrained_model_name_or_path}"):
             self.wrapped_tokenizer: WrappedPreTrainedTokenizer = HuggingFaceTokenizer.create_tokenizer(

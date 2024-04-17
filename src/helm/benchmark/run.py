@@ -1,6 +1,7 @@
 import argparse
 from dataclasses import replace
 import os
+import uuid
 from typing import List, Optional
 
 
@@ -95,7 +96,8 @@ def run_benchmarking(
         if mongo_uri:
             mongo_cache_backend_config = MongoCacheBackendConfig(mongo_uri)
         else:
-            sqlite_cache_path = os.path.join(local_path, CACHE_DIR)
+            # Create unique cache path to avoid database lock when multiple instances are launched
+            sqlite_cache_path = os.path.join(local_path, CACHE_DIR, f"cache_{uuid.uuid4()}.db")
             ensure_directory_exists(sqlite_cache_path)
             sqlite_cache_backend_config = SqliteCacheBackendConfig(sqlite_cache_path)
 

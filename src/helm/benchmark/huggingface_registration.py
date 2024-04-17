@@ -33,7 +33,7 @@ def register_huggingface_model(
     if revision:
         create_tokenizer_args["revision"] = revision
     with HuggingFaceTokenizer.create_tokenizer(**create_tokenizer_args) as tokenizer:
-        max_sequence_length = tokenizer.model_max_length
+        max_sequence_length = min(tokenizer.model_max_length, 1_000_000)
         end_of_text_token = tokenizer.eos_token or ""
         prefix_token = tokenizer.bos_token or ""
     # If the tokenizer config has a model_max_length of 1000000000000000019884624838656
