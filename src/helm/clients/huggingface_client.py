@@ -1,6 +1,7 @@
 from copy import deepcopy
 import torch
 from transformers import AutoModelForCausalLM
+from transformers import AutoModelForSeq2SeqLM
 from transformers.generation.stopping_criteria import (
     StoppingCriteria,
     StoppingCriteriaList,
@@ -86,9 +87,13 @@ class HuggingFaceServer:
                     pretrained_model_name_or_path, export=export, trust_remote_code=True, **kwargs
                 ).to(self.device)
             else:
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs
-                ).to(self.device)
+                if 'google/t5' in pretrained_model_name_or_path.lower():
+                    self.model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs)
+                else:
+                    self.model = AutoModelForCausalLM.from_pretrained(
+                        pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs
+                    )
+            self.model_name_or_path = pretrained_model_name_or_path
         with htrack_block(f"Loading Hugging Face tokenizer for model {pretrained_model_name_or_path}"):
             self.wrapped_tokenizer: WrappedPreTrainedTokenizer = HuggingFaceTokenizer.create_tokenizer(
                 pretrained_model_name_or_path, **kwargs
@@ -122,8 +127,26 @@ class HuggingFaceServer:
 
         # Use HuggingFace's `generate` method.
         if compute_logprobs_only:
-            with torch.no_grad():
-                output = self.model(encoded_input["input_ids"])
+            # T5 models
+            if hasattr(self.model, 'decoder'):
+                decoder_start_token = self.tokenizer.eos_token_id
+                decoder_input_ids = torch.full(
+                    (encoded_input["input_ids"].shape[0], 1),
+                    decoder_start_token,
+                    dtype=torch.long,
+                    device=self.model.device
+                )
+                with torch.no_grad():
+                    # output = self.model(**inputs, decoder_input_ids=decoder_input_ids)
+                    output = self.model(encoded_input["input_ids"], decoder_input_ids=decoder_input_ids)
+            else:
+                # For causal language models (decoder-only), perform inference directly
+                with torch.no_grad():
+                    # output = self.model(**inputs)
+                    output = self.model(encoded_input["input_ids"])
+
+            # with torch.no_grad():
+            #     output = self.model(encoded_input["input_ids"])
             sequences = encoded_input["input_ids"]
             scores = output.logits
         else:
@@ -157,20 +180,29 @@ class HuggingFaceServer:
         all_generated_tokens_logprobs = []
         for completion_id in range(raw_request["num_return_sequences"]):
             generated_tokens_logprobs = []
-            for i in range(len(sequences[completion_id]) - len(encoded_input.input_ids[0])):
-                logprobs = torch.nn.functional.log_softmax(scores[i][completion_id], dim=0)
-                # Get log probability of chosen token.
-                j = i + len(encoded_input.input_ids[0])
-                generated_tokens_logprobs.append(logprobs[sequences[completion_id][j]].item())
+            if 'google/t5' in self.model_name_or_path.lower():
+                for i in range(len(sequences[completion_id])-1):
+                    logprobs = torch.nn.functional.log_softmax(scores[i][completion_id], dim=0)
+                    generated_tokens_logprobs.append(logprobs[sequences[completion_id][i]].item())
+            else:
+                for i in range(len(sequences[completion_id]) - len(encoded_input.input_ids[0])):
+                    logprobs = torch.nn.functional.log_softmax(scores[i][completion_id], dim=0)
+                    # Get log probability of chosen token.
+                    j = i + len(encoded_input.input_ids[0])
+                    generated_tokens_logprobs.append(logprobs[sequences[completion_id][j]].item())
             all_generated_tokens_logprobs.append(generated_tokens_logprobs)
-
         # Remove prompt from the start of each sequence if echo_prompt is False.
         if not raw_request["echo_prompt"]:
-            sequences = [sequence[len(encoded_input.input_ids[0]) :] for sequence in sequences]
+            if 'google/t5' not in self.model_name_or_path.lower():
+                sequences = [sequence[len(encoded_input.input_ids[0]) :] for sequence in sequences]
 
         with self.wrapped_tokenizer as tokenizer:
-            all_tokens = [[tokenizer.decode(token) for token in sequence_tokens] for sequence_tokens in sequences]
-            all_decoded_text = tokenizer.batch_decode(sequences)
+            if 'google/t5' in self.model_name_or_path.lower():
+                all_tokens = [[tokenizer.decode(token, skip_special_tokens=True) for token in sequence_tokens] for sequence_tokens in sequences]
+                all_decoded_text = tokenizer.batch_decode(sequences, skip_special_tokens=True)
+            else:
+                all_tokens = [[tokenizer.decode(token) for token in sequence_tokens] for sequence_tokens in sequences]
+                all_decoded_text = tokenizer.batch_decode(sequences)
 
         completions = []
         for decoded_text, tokens, generated_tokens_logprobs in zip(
