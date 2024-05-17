@@ -558,6 +558,26 @@ models:
 
 
   # Deepseek
+  - name: /data/public_models/huggingface/deepseek-ai/deepseek-llm-7b-base
+    display_name: DeepSeek LLM Base (7B)
+    description: DeepSeek LLM Base is a open-source language model trained on 2 trillion tokens in both English and Chinese, and fine-tuned supervised fine-tuning (SFT) and Direct Preference Optimization (DPO). ([paper](https://arxiv.org/abs/2401.02954))
+    creator_organization_name: DeepSeek
+    access: open
+    num_parameters: 7000000000
+    release_date: 2024-01-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/deepseek-ai/deepseek-llm-67b-base
+    display_name: DeepSeek LLM Base (67B)
+    description: DeepSeek LLM Base is a open-source language model trained on 2 trillion tokens in both English and Chinese, and fine-tuned supervised fine-tuning (SFT) and Direct Preference Optimization (DPO). ([paper](https://arxiv.org/abs/2401.02954))
+    creator_organization_name: DeepSeek
+    access: open
+    num_parameters: 67000000000
+    release_date: 2024-01-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+
+  # Deepseek
   - name: deepseek-ai/deepseek-llm-67b-chat
     display_name: DeepSeek LLM Chat (67B)
     description: DeepSeek LLM Chat is a open-source language model trained on 2 trillion tokens in both English and Chinese, and fine-tuned supervised fine-tuning (SFT) and Direct Preference Optimization (DPO). ([paper](https://arxiv.org/abs/2401.02954))
@@ -587,6 +607,51 @@ models:
     num_parameters: 20000000000
     release_date: 2022-02-02
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG]
+
+  - name: eleutherai/pythia-14m
+    display_name: Pythia (14M)
+    description: Pythia (14M parameters). The Pythia project combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+    creator_organization_name: EleutherAI
+    access: open
+    num_parameters: 14000000
+    release_date: 2023-02-13
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: eleutherai/pythia-70m
+    display_name: Pythia (70M)
+    description: Pythia (70M parameters). The Pythia project combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+    creator_organization_name: EleutherAI
+    access: open
+    num_parameters: 70000000
+    release_date: 2023-02-13
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: eleutherai/pythia-160m
+    display_name: Pythia (160M)
+    description: Pythia (160M parameters). The Pythia project combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+    creator_organization_name: EleutherAI
+    access: open
+    num_parameters: 160000000
+    release_date: 2023-02-13
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: eleutherai/pythia-410m
+    display_name: Pythia (410M)
+    description: Pythia (410M parameters). The Pythia project combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+    creator_organization_name: EleutherAI
+    access: open
+    num_parameters: 410000000
+    release_date: 2023-02-13
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: eleutherai/pythia-1.4b-v0
+    display_name: Pythia (1.4B)
+    description: Pythia (1.4B parameters). The Pythia project combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+    creator_organization_name: EleutherAI
+    access: open
+    num_parameters: 1400000000
+    release_date: 2023-02-13
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
   - name: eleutherai/pythia-1b-v0
     display_name: Pythia (1B)
@@ -627,6 +692,53 @@ models:
 
 
   # Google
+  - name: /data/public_models/huggingface/google/t5-v1_1-small
+    display_name: t5-v1_1-small
+    description: t5-v1_1-small
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2019-10-23
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG]
+
+  - name: /data/public_models/huggingface/google/t5-v1_1-base
+    display_name: t5-v1_1-base
+    description: t5-v1_1-base
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2019-10-23
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG]
+
+  - name: /data/public_models/huggingface/google/t5-v1_1-large
+    display_name: t5-v1_1-large
+    description: t5-v1_1-large
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2019-10-23
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG]
+
+  - name: /data/public_models/huggingface/google/t5-v1_1-xl
+    display_name: t5-v1_1-xl
+    description: t5-v1_1-xl
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2019-10-23
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG]
+
+
+  - name: /data/public_models/huggingface/google/t5-v1_1-xxl
+    display_name: t5-v1_1-xxl
+    description: t5-v1_1-xxl
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2019-10-23
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG]
+
+
   - name: google/t5-11b
     display_name: T5 (11B)
     description: T5 (11B parameters) is an encoder-decoder model trained on a multi-task mixture, where each task is converted into a text-to-text format ([paper](https://arxiv.org/pdf/1910.10683.pdf)).
@@ -705,7 +817,7 @@ models:
     release_date: 2024-04-10
     tags: [TEXT_MODEL_TAG, VISION_LANGUAGE_MODEL_TAG, GOOGLE_GEMINI_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
-  - name: google/gemma-2b
+  - name: /data/public_models/huggingface/google/gemma-2b
     display_name: Gemma (2B)
     # TODO: Fill in Gemma description.
     description: TBD
@@ -1340,6 +1452,14 @@ models:
     num_parameters: 6000000000
     release_date: 2023-11-02
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+  - name: 01-ai/yi-9b
+    display_name: Yi (9B)
+    description: The Yi models are large language models trained from scratch by developers at 01.AI.
+    creator_organization_name: 01.AI
+    access: open
+    num_parameters: 9000000000
+    release_date: 2023-11-02
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
   - name: 01-ai/yi-34b
     display_name: Yi (34B)
     description: The Yi models are large language models trained from scratch by developers at 01.AI.
@@ -1959,6 +2079,39 @@ models:
     release_date: 2024-02-05
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
 
+  - name: qwen/qwen1.5-0.5b
+    display_name: Qwen1.5 (0.5B)
+    description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: qwen/qwen1.5-1.8b
+    display_name: Qwen1.5 (1.8B)
+    description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: qwen/qwen1.5-4b
+    display_name: Qwen1.5 (4B)
+    description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: qwen/qwen1.5-110b
+    display_name: Qwen1.5 (110B)
+    description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+
   - name: qwen/qwen1.5-7b
     display_name: Qwen1.5 (7B)
     description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
@@ -2109,6 +2262,15 @@ models:
     creator_organization_name: TII UAE
     access: open
     num_parameters: 7000000000
+    release_date: 2023-03-15
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/tiiuae/falcon-180B
+    display_name: Falcon (180B)
+    description: Falcon-180B is a 180B parameters causal decoder-only model built by TII and trained on 1,500B tokens of RefinedWeb enhanced with curated corpora.
+    creator_organization_name: TII UAE
+    access: open
+    num_parameters: 180000000000
     release_date: 2023-03-15
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
 

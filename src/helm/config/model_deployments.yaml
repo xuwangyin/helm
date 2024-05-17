@@ -384,6 +384,20 @@ model_deployments:
       class_name: "helm.benchmark.window_services.image_generation.clip_window_service.CLIPWindowService"
 
   # Deepseek
+  - name: huggingface/deepseek-llm-7b-base
+    model_name: /data/public_models/huggingface/deepseek-ai/deepseek-llm-7b-base
+    tokenizer_name: deepseek-ai/deepseek-llm-67b-chat
+    max_sequence_length: 4095
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/deepseek-llm-67b-base
+    model_name: /data/public_models/huggingface/deepseek-ai/deepseek-llm-67b-base
+    tokenizer_name: deepseek-ai/deepseek-llm-67b-chat
+    max_sequence_length: 4095
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
 
   - name: together/deepseek-llm-67b-chat
     model_name: deepseek-ai/deepseek-llm-67b-chat
@@ -459,12 +473,12 @@ model_deployments:
       class_name: "helm.clients.vertexai_client.VertexAIChatClient"
 
   ## Gemma
-  - name: together/gemma-2b
-    model_name: google/gemma-2b
+  - name: huggingface/gemma-2b
+    model_name: /data/public_models/huggingface/google/gemma-2b
     tokenizer_name: google/gemma-2b
     max_sequence_length: 7167
     client_spec:
-      class_name: "helm.clients.together_client.TogetherClient"
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
   - name: together/gemma-2b-it
     model_name: google/gemma-2b-it
@@ -599,8 +613,43 @@ model_deployments:
       class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
   ## EleutherAI
+  - name: huggingface/pythia-14m
+    model_name: eleutherai/pythia-14m
+    tokenizer_name: EleutherAI/gpt-neox-20b
+    max_sequence_length: 2048
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/pythia-70m
+    model_name: eleutherai/pythia-70m
+    tokenizer_name: EleutherAI/gpt-neox-20b
+    max_sequence_length: 2048
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/pythia-160m
+    model_name: eleutherai/pythia-160m
+    tokenizer_name: EleutherAI/gpt-neox-20b
+    max_sequence_length: 2048
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/pythia-410m
+    model_name: eleutherai/pythia-410m
+    tokenizer_name: EleutherAI/gpt-neox-20b
+    max_sequence_length: 2048
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
   - name: huggingface/pythia-1b-v0
     model_name: eleutherai/pythia-1b-v0
+    tokenizer_name: EleutherAI/gpt-neox-20b
+    max_sequence_length: 2048
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/pythia-1.4b-v0
+    model_name: eleutherai/pythia-1.4b-v0
     tokenizer_name: EleutherAI/gpt-neox-20b
     max_sequence_length: 2048
     client_spec:
@@ -1523,6 +1572,43 @@ model_deployments:
       class_name: "helm.benchmark.window_services.encoder_decoder_window_service.EncoderDecoderWindowService"
 
   ## Google
+  - name: huggingface/t5-v1_1-small
+    model_name: /data/public_models/huggingface/google/t5-v1_1-small
+    tokenizer_name: google/t5-11b
+    max_sequence_length: 511
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+    window_service_spec:
+      class_name: "helm.benchmark.window_services.encoder_decoder_window_service.EncoderDecoderWindowService"
+
+  - name: huggingface/t5-v1_1-base
+    model_name: /data/public_models/huggingface/google/t5-v1_1-base
+    tokenizer_name: google/t5-11b
+    max_sequence_length: 511
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+  - name: huggingface/t5-v1_1-large
+    model_name: /data/public_models/huggingface/google/t5-v1_1-large
+    tokenizer_name: google/t5-11b
+    max_sequence_length: 511
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/t5-v1_1-xl
+    model_name: /data/public_models/huggingface/google/t5-v1_1-xl
+    tokenizer_name: google/t5-11b
+    max_sequence_length: 511
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/t5-v1_1-xxl
+    model_name: /data/public_models/huggingface/google/t5-v1_1-xxl
+    tokenizer_name: google/t5-11b
+    max_sequence_length: 511
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+
   - name: together/t5-11b
     deprecated: true  # Removed from Together
     model_name: google/t5-11b
@@ -1654,14 +1740,19 @@ model_deployments:
         together_model: meta-llama/Llama-3-70b-chat-hf
 
   # 01.AI
-  - name: together/yi-6b
+  - name: huggingface/yi-6b
     model_name: 01-ai/yi-6b
     tokenizer_name: 01-ai/Yi-6B
     max_sequence_length: 4095
     client_spec:
-      class_name: "helm.clients.together_client.TogetherClient"
-      args:
-        together_model: zero-one-ai/Yi-6B
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/yi-9b
+    model_name: 01-ai/yi-9b
+    tokenizer_name: 01-ai/Yi-6B
+    max_sequence_length: 4095
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
   - name: together/yi-34b
     model_name: 01-ai/yi-34b
@@ -1774,6 +1865,13 @@ model_deployments:
         together_model: togethercomputer/alpaca-7b
 
   ## Tiiuae
+  - name: huggingface/falcon-7b
+    model_name: /data/public_models/huggingface/tiiuae/falcon-180B
+    tokenizer_name: tiiuae/falcon-7b
+    max_sequence_length: 2047 # Subtract 1 token to work around a off-by-one bug in Together's input validation token counting (#2080)
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
   - name: together/falcon-7b
     model_name: tiiuae/falcon-7b
     tokenizer_name: tiiuae/falcon-7b
@@ -1988,6 +2086,34 @@ model_deployments:
       class_name: "helm.clients.together_client.TogetherClient"
       args:
         together_model: togethercomputer/Qwen-7B
+
+  - name: huggingface/qwen1.5-0.5b
+    model_name: qwen/qwen1.5-0.5b
+    tokenizer_name: qwen/qwen1.5-7b
+    max_sequence_length: 32767
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/qwen1.5-1.8b
+    model_name: qwen/qwen1.5-1.8b
+    tokenizer_name: qwen/qwen1.5-7b
+    max_sequence_length: 32767
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/qwen1.5-4b
+    model_name: qwen/qwen1.5-4b
+    tokenizer_name: qwen/qwen1.5-7b
+    max_sequence_length: 32767
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
+
+  - name: huggingface/qwen1.5-110b
+    model_name: qwen/qwen1.5-110b
+    tokenizer_name: qwen/qwen1.5-7b
+    max_sequence_length: 32767
+    client_spec:
+      class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
   - name: together/qwen1.5-7b
     model_name: qwen/qwen1.5-7b
