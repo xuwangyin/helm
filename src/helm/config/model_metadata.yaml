@@ -586,6 +586,14 @@ models:
     num_parameters: 67000000000
     release_date: 2024-01-05
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+  - name: deepseek-ai/deepseek-llm-7b-chat
+    display_name: DeepSeek LLM Chat (7B)
+    description: DeepSeek LLM Chat is a open-source language model trained on 2 trillion tokens in both English and Chinese, and fine-tuned supervised fine-tuning (SFT) and Direct Preference Optimization (DPO). ([paper](https://arxiv.org/abs/2401.02954))
+    creator_organization_name: DeepSeek
+    access: open
+    num_parameters: 7000000000
+    release_date: 2024-01-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
 
   # EleutherAI
@@ -756,6 +764,52 @@ models:
     num_parameters: 20000000000
     release_date: 2022-05-10
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, NLG_PREFIX_TAG]
+
+  - name: /data/public_models/huggingface/google/flan-t5-xl
+    display_name: Flan-T5 xl
+    description: Flan-T5 xl is T5 fine-tuned on 1.8K tasks ([paper](https://arxiv.org/pdf/2210.11416.pdf)).
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2022-12-06 # Paper date
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/google/flan-t5-xxl
+    display_name: Flan-T5 xxl
+    description: Flan-T5 xxl is T5 fine-tuned on 1.8K tasks ([paper](https://arxiv.org/pdf/2210.11416.pdf)).
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2022-12-06 # Paper date
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/google/flan-t5-large
+    display_name: Flan-T5 large
+    description: Flan-T5 large is T5 fine-tuned on 1.8K tasks ([paper](https://arxiv.org/pdf/2210.11416.pdf)).
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2022-12-06 # Paper date
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+
+  - name: /data/public_models/huggingface/google/flan-t5-base
+    display_name: Flan-T5 base
+    description: Flan-T5 base is T5 fine-tuned on 1.8K tasks ([paper](https://arxiv.org/pdf/2210.11416.pdf)).
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2022-12-06 # Paper date
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/google/flan-t5-small
+    display_name: Flan-T5 Small
+    description: Flan-T5 Small is T5 fine-tuned on 1.8K tasks ([paper](https://arxiv.org/pdf/2210.11416.pdf)).
+    creator_organization_name: Google
+    access: open
+    num_parameters: 11000000000
+    release_date: 2022-12-06 # Paper date
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, ABLATION_MODEL_TAG, NO_NEWLINES_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
   - name: google/flan-t5-xxl
     display_name: Flan-T5 (11B)
@@ -1867,6 +1921,13 @@ models:
 
 
   ## GPT 4 Models
+  - name: openai/gpt-4o-2024-05-13
+    display_name: GPT-4o
+    description: GPT-4o
+    creator_organization_name: OpenAI
+    access: limited
+    release_date: 2024-05-13
+    tags: [TEXT_MODEL_TAG, OPENAI_CHATGPT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
   - name: openai/gpt-4-1106-preview
     display_name: GPT-4 Turbo (1106 preview)
