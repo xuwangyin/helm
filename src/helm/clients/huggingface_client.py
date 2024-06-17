@@ -87,7 +87,7 @@ class HuggingFaceServer:
                     pretrained_model_name_or_path, export=export, trust_remote_code=True, **kwargs
                 ).to(self.device)
             else:
-                if 'google/t5' in pretrained_model_name_or_path.lower():
+                if 'google/flan-t5' in pretrained_model_name_or_path.lower():
                     self.model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs)
                 else:
                     self.model = AutoModelForCausalLM.from_pretrained(
@@ -180,7 +180,7 @@ class HuggingFaceServer:
         all_generated_tokens_logprobs = []
         for completion_id in range(raw_request["num_return_sequences"]):
             generated_tokens_logprobs = []
-            if 'google/t5' in self.model_name_or_path.lower():
+            if 'google/flan-t5' in self.model_name_or_path.lower():
                 for i in range(len(sequences[completion_id])-1):
                     logprobs = torch.nn.functional.log_softmax(scores[i][completion_id], dim=0)
                     generated_tokens_logprobs.append(logprobs[sequences[completion_id][i]].item())
@@ -193,11 +193,11 @@ class HuggingFaceServer:
             all_generated_tokens_logprobs.append(generated_tokens_logprobs)
         # Remove prompt from the start of each sequence if echo_prompt is False.
         if not raw_request["echo_prompt"]:
-            if 'google/t5' not in self.model_name_or_path.lower():
+            if 'google/flan-t5' not in self.model_name_or_path.lower():
                 sequences = [sequence[len(encoded_input.input_ids[0]) :] for sequence in sequences]
 
         with self.wrapped_tokenizer as tokenizer:
-            if 'google/t5' in self.model_name_or_path.lower():
+            if 'google/flan-t5' in self.model_name_or_path.lower():
                 all_tokens = [[tokenizer.decode(token, skip_special_tokens=True) for token in sequence_tokens] for sequence_tokens in sequences]
                 all_decoded_text = tokenizer.batch_decode(sequences, skip_special_tokens=True)
             else:
