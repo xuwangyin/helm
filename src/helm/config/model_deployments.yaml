@@ -2260,14 +2260,14 @@ model_deployments:
   - name: huggingface/falcon-180b-chat
     model_name: /data/public_models/huggingface/tiiuae/falcon-180B-chat
     tokenizer_name: tiiuae/falcon-7b
-    max_sequence_length: 2047 # Subtract 1 token to work around a off-by-one bug in Together's input validation token counting (#2080)
+    max_sequence_length: 1000 # Subtract 1 token to work around a off-by-one bug in Together's input validation token counting (#2080)
     client_spec:
       class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
   - name: huggingface/falcon-180b
     model_name: /data/public_models/huggingface/tiiuae/falcon-180B
     tokenizer_name: tiiuae/falcon-7b
-    max_sequence_length: 2047 # Subtract 1 token to work around a off-by-one bug in Together's input validation token counting (#2080)
+    max_sequence_length: 1000 # Subtract 1 token to work around a off-by-one bug in Together's input validation token counting (#2080)
     client_spec:
       class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
