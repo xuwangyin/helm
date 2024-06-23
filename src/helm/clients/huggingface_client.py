@@ -88,16 +88,26 @@ class HuggingFaceServer:
                 # TODO: Delete if-else and don't set trust_remote_code=True
                 if "trust_remote_code" in kwargs:
                     self.model = OVModelForCausalLM.from_pretrained(
-                        pretrained_model_name_or_path, export=True, device_map='auto', **kwargs)
+                        pretrained_model_name_or_path, export=True, torch_dtype=torch.bfloat16, device_map='auto', **kwargs)
                 else:
                     self.model = OVModelForCausalLM.from_pretrained(
-                        pretrained_model_name_or_path, export=True, trust_remote_code=True, device_map='auto', **kwargs)
+                        pretrained_model_name_or_path, export=True, trust_remote_code=True, torch_dtype=torch.bfloat16, device_map='auto', **kwargs)
             else:
                 if 'google/flan-t5' in pretrained_model_name_or_path.lower():
-                    self.model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs)
+                    self.model = AutoModelForSeq2SeqLM.from_pretrained(
+                        pretrained_model_name_or_path,
+                        torch_dtype=torch.bfloat16,
+                        device_map='auto',
+                        trust_remote_code=trust_remote_code,
+                        **kwargs
+                    )
                 else:
                     self.model = AutoModelForCausalLM.from_pretrained(
-                        pretrained_model_name_or_path, trust_remote_code=True, device_map='auto', **kwargs
+                        pretrained_model_name_or_path,
+                        torch_dtype=torch.bfloat16,
+                        device_map='auto',
+                        trust_remote_code=trust_remote_code,
+                        **kwargs
                     )
             self.model_name_or_path = pretrained_model_name_or_path
         self.wrapped_tokenizer = wrapped_tokenizer
@@ -253,7 +263,7 @@ class HuggingFaceServerFactory:
         return HuggingFaceServerFactory._servers[helm_model_name]
 
 
-TORCH_DTYPE_KEY = "torch_dtype"
+TORCH_DTYPE_KEY = "torch.bfloat16"
 TORCH_DTYPE_VALUE_PREFIX = "torch."
 
 
