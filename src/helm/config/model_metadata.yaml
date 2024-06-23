@@ -585,6 +585,16 @@ models:
     release_date: 2024-03-27
     tags: [TEXT_MODEL_TAG, PARTIAL_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
+  - name: /data/public_models/huggingface/databricks/dbrx-base
+    display_name: DBRX Base
+    description: DBRX is a large language model with a fine-grained mixture-of-experts (MoE) architecture that uses 16 experts and chooses 4. It has 132B total parameters, of which 36B parameters are active on any input. ([blog post](https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm))
+    creator_organization_name: Databricks
+    access: open
+    num_parameters: 132000000000
+    release_date: 2024-03-27
+    tags: [TEXT_MODEL_TAG, PARTIAL_FUNCTIONALITY_TEXT_MODEL_TAG]
+
+
 
   # DeepMind
   - name: deepmind/gopher # NOT SUPPORTED
@@ -1543,7 +1553,35 @@ models:
     release_date: 2024-04-18
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
 
-  - name: meta/llama-3-8b-chat
+  - name: /data/public_models/huggingface/meta-llama/Llama-2-7b-chat-hf
+    display_name: Llama 2 Instruct (7B)
+    description: Llama 2 is a family of language models that have been trained on more than 15 trillion tokens, and use Grouped-Query Attention (GQA) for improved inference scalability. It used SFT, rejection sampling, PPO and DPO for post-training.
+    creator_organization_name: Meta
+    access: open
+    num_parameters: 7000000000
+    release_date: 2024-04-18
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/meta-llama/Llama-2-13b-chat-hf
+    display_name: Llama 2 Instruct (13B)
+    description: Llama 2 is a family of language models that have been trained on more than 15 trillion tokens, and use Grouped-Query Attention (GQA) for improved inference scalability. It used SFT, rejection sampling, PPO and DPO for post-training.
+    creator_organization_name: Meta
+    access: open
+    num_parameters: 13000000000
+    release_date: 2024-04-18
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: /data/public_models/huggingface/meta-llama/Llama-2-70b-chat-hf
+    display_name: Llama 2 Instruct (70B)
+    description: Llama 2 is a family of language models that have been trained on more than 15 trillion tokens, and use Grouped-Query Attention (GQA) for improved inference scalability. It used SFT, rejection sampling, PPO and DPO for post-training.
+    creator_organization_name: Meta
+    access: open
+    num_parameters: 70000000000
+    release_date: 2024-04-18
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+
+  - name: /data/public_models/huggingface/meta-llama/Meta-Llama-3-8B-Instruct
     display_name: Llama 3 Instruct (8B)
     description: Llama 3 is a family of language models that have been trained on more than 15 trillion tokens, and use Grouped-Query Attention (GQA) for improved inference scalability. It used SFT, rejection sampling, PPO and DPO for post-training.
     creator_organization_name: Meta
@@ -1552,7 +1590,7 @@ models:
     release_date: 2024-04-18
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
-  - name: meta/llama-3-70b-chat
+  - name: /data/public_models/huggingface/meta-llama/Meta-Llama-3-70B-Instruct
     display_name: Llama 3 Instruct (70B)
     description: Llama 3 is a family of language models that have been trained on more than 15 trillion tokens, and use Grouped-Query Attention (GQA) for improved inference scalability. It used SFT, rejection sampling, PPO and DPO for post-training.
     creator_organization_name: Meta
@@ -1830,7 +1868,7 @@ models:
     release_date: 2023-12-08
     tags: [TEXT_MODEL_TAG, PARTIAL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
-  - name: mistralai/mixtral-8x7b-instruct-v0.1
+  - name: /data/public_models/huggingface/mistralai/Mixtral-8x7B-Instruct-v0.1
     display_name: Mixtral Instruct (8x7B)
     description: Mixtral Instruct (8x7B) is a version of Mixtral (8x7B) that was optimized through supervised fine-tuning and direct preference optimisation (DPO) for careful instruction following. ([blog post](https://mistral.ai/news/mixtral-of-experts/)).
     creator_organization_name: Mistral AI
@@ -1849,7 +1887,7 @@ models:
     release_date: 2024-04-10
     tags: [TEXT_MODEL_TAG, PARTIAL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
-  - name: mistralai/mixtral-8x22b-instruct-v0.1
+  - name: /data/public_models/huggingface/mistralai/Mixtral-8x22B-Instruct-v0.1
     display_name: Mixtral Instruct (8x22B)
     description: Mistral AI's mixture-of-experts model that uses 39B active parameters out of 141B ([blog post](https://mistral.ai/news/mixtral-8x22b/)).
     creator_organization_name: Mistral AI
@@ -2454,6 +2492,30 @@ models:
     release_date: 2024-02-05
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG]
 
+  - name: qwen/qwen1.5-0.5b-chat
+    display_name: Qwen1.5 Chat (0.5B)
+    description: 0.5B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: qwen/qwen1.5-1.8b-chat
+    display_name: Qwen1.5 Chat (1.8B)
+    description: 1.8B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
+  - name: qwen/qwen1.5-4b-chat
+    display_name: Qwen1.5 Chat (4B)
+    description: 4B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
+    creator_organization_name: Qwen
+    access: open
+    release_date: 2024-02-05
+    tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
+
   - name: qwen/qwen1.5-7b-chat
     display_name: Qwen1.5 Chat (7B)
     description: 7B-parameter version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. ([blog](https://qwenlm.github.io/blog/qwen1.5/))
@@ -2486,7 +2548,7 @@ models:
     release_date: 2024-02-05
     tags: [TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG, INSTRUCTION_FOLLOWING_MODEL_TAG]
 
-  - name: qwen/qwen1.5-110b-chat
+  - name: /data/public_models/Qwen/Qwen1.5-110B-Chat
     display_name: Qwen1.5 Chat (110B)
     description: 110B-parameter chat version of the large language model series, Qwen 1.5 (abbr. Tongyi Qianwen), proposed by Aibaba Cloud. Qwen is a family of transformer models with SwiGLU activation, RoPE, and multi-head attention. The 110B version also includes grouped query attention (GQA). ([blog](https://qwenlm.github.io/blog/qwen1.5-110b/))
     creator_organization_name: Qwen
@@ -2638,6 +2700,15 @@ models:
     release_date: 2023-03-15
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
+  - name: /data/public_models/huggingface/tiiuae/falcon-180B-chat
+    display_name: Falcon Chat (180B)
+    description: Falcon-180B Chat is a 180B parameters causal decoder-only Chat model built by TII and trained on 1,500B tokens of RefinedWeb enhanced with curated corpora.
+    creator_organization_name: TII UAE
+    access: open
+    num_parameters: 180000000000
+    release_date: 2023-03-15
+    tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG, INSTURCTION_FOLLOWING_MODEL_TAG]
+
   - name: /data/public_models/huggingface/tiiuae/falcon-180B
     display_name: Falcon (180B)
     description: Falcon-180B is a 180B parameters causal decoder-only model built by TII and trained on 1,500B tokens of RefinedWeb enhanced with curated corpora.
@@ -2647,7 +2718,7 @@ models:
     release_date: 2023-03-15
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
-  - name: tiiuae/falcon-7b-instruct
+  - name: /data/public_models/huggingface/tiiuae/falcon-7b-instruct
     display_name: Falcon-Instruct (7B)
     description: Falcon-7B-Instruct is a 7B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets.
     creator_organization_name: TII UAE
@@ -2665,7 +2736,7 @@ models:
     release_date: 2023-05-25
     tags: [TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG]
 
-  - name: tiiuae/falcon-40b-instruct
+  - name: /data/public_models/huggingface/tiiuae/falcon-40b-instruct
     display_name: Falcon-Instruct (40B)
     description: Falcon-40B-Instruct is a 40B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets.
     creator_organization_name: TII UAE
