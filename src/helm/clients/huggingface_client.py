@@ -98,7 +98,7 @@ class HuggingFaceServer:
                         pretrained_model_name_or_path,
                         torch_dtype=torch.bfloat16,
                         device_map='auto',
-                        trust_remote_code=trust_remote_code,
+                        trust_remote_code=True,
                         **kwargs
                     )
                 else:
@@ -106,7 +106,7 @@ class HuggingFaceServer:
                         pretrained_model_name_or_path,
                         torch_dtype=torch.bfloat16,
                         device_map='auto',
-                        trust_remote_code=trust_remote_code,
+                        trust_remote_code=True,
                         **kwargs
                     )
             self.model_name_or_path = pretrained_model_name_or_path
