@@ -369,7 +369,7 @@ model_deployments:
   - name: huggingface/dbrx-base
     model_name: /data/public_models/huggingface/databricks/dbrx-base
     tokenizer_name: databricks/dbrx-instruct
-    max_sequence_length: 32767
+    max_sequence_length: 1000
     client_spec:
       class_name: "helm.clients.huggingface_client.HuggingFaceClient"
 
